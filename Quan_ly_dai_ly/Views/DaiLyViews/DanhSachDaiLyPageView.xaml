@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quan_ly_dai_ly.Views.DaiLyViews.DanhSachDaiLyPageView"
+             xmlns:models="clr-namespace:Quan_ly_dai_ly.Models" 
+             xmlns:viewmodels="clr-namespace:Quan_ly_dai_ly.ViewModels.DaiLyViewModels"
+             x:DataType="viewmodels:DanhSachDaiLyPageViewModel"
+             Title="DanhSachDaiLyPage"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid RowDefinitions="50, Auto, *, Auto"
+          ColumnDefinitions="*, *"
+          Padding="10"
+          ColumnSpacing="10"
+          RowSpacing="10">
+
+        <Label Text="Danh sách đại lý"
+               FontAttributes="Bold"
+               FontFamily="Roboto"
+               Grid.Row="0"
+               Grid.Column="0"
+               TextColor="Black"
+               FontSize="24"/>
+
+        <HorizontalStackLayout Grid.Row="1" Grid.Column="0"
+                               Spacing="10"
+                               HorizontalOptions="Start">
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Tra cứu đại lý" Command="{Binding ClickButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Load" Command="{Binding LoadButtonCommand}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="1" Grid.Column="1"
+                               Spacing="10"
+                               HorizontalOptions="End">
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Tiếp nhận đại lý"  Command="{Binding ThemDaiLyButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Cập nhập đại lý" Command="{Binding ClickButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Xóa đại lý" Command="{Binding ClickButtonCommand}"/>
+        </HorizontalStackLayout>
+
+        <Border Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid RowDefinitions="Auto, *">
+                <Grid Grid.Row="0"
+                      ColumnDefinitions=".50*,.75*,2*,*,.75*,.75*,*,*"
+                      BackgroundColor="Gray"
+                      Padding="5,10,10,10">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Mã đại lý" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Tên đại lý" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Địa chỉ" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="3" Text="Email" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="4" Text="Quận" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="5" Text="Loại đại lý" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="6" Text="Ngày tiếp nhận" HorizontalOptions="Center" FontSize="15"/>
+                    <Label Grid.Row="0" Grid.Column="7" Text="Tiền nợ" HorizontalOptions="Center" FontSize="15"/>
+                </Grid>
+
+
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding DanhSachDaiLy}"
+                                VerticalScrollBarVisibility="Always"
+                                IsVisible="{Binding IsNotLoading}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:DaiLy">
+                            <Grid ColumnDefinitions=".50*,.75*,2*,*,.75*,.75*,*,*"
+                                  Margin="10"
+                                  Padding="5"
+                                  BackgroundColor="White">
+                                <Label
+                                    Grid.Column="0"
+                                    Text="{Binding MaDaily}"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Ten}"
+                                     HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="2"
+                                    Text="{Binding DiaChi}"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="3"
+                                    Text="{Binding Email}"
+                                     HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="4"
+                                    Text="{Binding Quan.TenQuan}"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="5"
+                                    Text="{Binding LoaiDaiLy.TenLoaiDaiLy}"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="6"
+                                    Text="{Binding NgayTiepNhan, StringFormat='{0:dd/MM/yyyy}'}"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Grid.Column="7"
+                                    Text="{Binding NoDaiLy, StringFormat='{0:N0} VNĐ'}"
+                                    HorizontalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+            
+        </Border>
+
+        <ActivityIndicator
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            HeightRequest="50"
+            WidthRequest="50"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            IsRunning="{Binding IsLoading}"
+            Color="Blue"/>
+        
+        
+    </Grid>
+</ContentPage>

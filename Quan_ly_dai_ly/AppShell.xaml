@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Quan_ly_dai_ly.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Quan_ly_dai_ly"
+    xmlns:dailyviews="clr-namespace:Quan_ly_dai_ly.Views.DaiLyViews"
+    xmlns:phieuxuatviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuXuatViews"
+    Title="Quan_ly_dai_ly">
+
+    <ShellContent
+        Title="Danh sách đại lý"
+        ContentTemplate="{DataTemplate phieuxuatviews:DanhSachPhieuXuatHangPageView}"/>
+</Shell>

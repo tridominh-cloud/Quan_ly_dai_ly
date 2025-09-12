@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="Quan_ly_dai_ly.Views.DaiLyViews.ThemDaiLyWindowView"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Size="960,550"
+               Color="White">
+    <Grid RowDefinitions="50,*,80">
+
+        <Label Text="Tiếp nhận đại lý"
+               Grid.Row="0"
+               Margin="20,0,0,0"
+               FontSize="24"
+               FontAttributes="Bold"
+               FontFamily="Roboto"/>
+
+        <Border Margin="10,10,10,10"
+                Stroke="Black"
+                Grid.Row="1"
+                StrokeShape="RoundRectangle 5">
+
+            <Grid RowDefinitions="Auto,Auto,Auto"
+                  ColumnDefinitions="*,*,*,*"
+                  ColumnSpacing="10"
+                  RowSpacing="20"
+                  Padding="20">
+                <!--Định nghĩa hàng 1-->
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="10">
+                    <Label  Text="Mã đại lý" Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Border Stroke="LightGray"
+                            StrokeThickness="1"
+                            StrokeShape="Rectangle 5"
+                            HeightRequest="40">
+                        <Label Text="{Binding MaDaiLy}" Margin="10" VerticalOptions="Center"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
+                    <Label Text="Tên đại lý" Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Entry HeightRequest="40" Text="{Binding Ten}"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="2" Spacing="10">
+                    <Label Text="Tên loại đại lý" Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Picker HeightRequest="40" 
+                            ItemDisplayBinding="{Binding TenLoaiDaiLy}"
+                            ItemsSource="{Binding LoaiDaiLies}"
+                            SelectedItem="{Binding SelectedLoaiDaiLy}"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="3" Spacing="10">
+                    <Label Text="Tên Quận" Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Picker HeightRequest="40"
+                            ItemDisplayBinding="{Binding TenQuan}"
+                            ItemsSource="{Binding Quans}"
+                            SelectedItem="{Binding SelectedQuan}">
+
+                    </Picker>
+                </VerticalStackLayout>
+                <!--Định nghĩa hàng 2-->
+                <Grid ColumnDefinitions="*,*,*" Grid.Row="1" Grid.ColumnSpan="4" ColumnSpacing="10">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Số điện thoại" Style="{StaticResource PrimaryLabelStyle}"/>
+                        <Entry HeightRequest="40" Text="{Binding SoDienThoai}"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Email" Style="{StaticResource PrimaryLabelStyle}"/>
+                        <Entry HeightRequest="40" Text="{Binding Email}"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="2">
+                        <Label Text="Ngày tiếp nhận" Style="{StaticResource PrimaryLabelStyle}"/>
+                        <DatePicker HeightRequest="40" 
+                                    WidthRequest="307" 
+                                    HorizontalOptions="Start"
+                                    Date="{Binding NgayTiepNhan}"/>
+                    </VerticalStackLayout>
+                </Grid>
+                <!--Định nghĩa hàng 3-->
+                <VerticalStackLayout Grid.Row="3" Grid.ColumnSpan="4">
+                    <Label Text="Địa chỉ" Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Entry HeightRequest="40" Text="{Binding DiaChi}"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+        <Grid Padding="20" Grid.Row="2" ColumnDefinitions="*,*,*">
+            <Button Style="{StaticResource PrimaryButtonStyle}" 
+                    Text="Tiếp nhận đại lý" 
+                    WidthRequest="200" 
+                    Grid.Column="0"
+                    Command="{Binding TiepNhanButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" 
+                    Text="Đại lý mới" 
+                    WidthRequest="200" 
+                    Grid.Column="1"
+                    Command="{Binding LamMoiButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" 
+                    Text="Thoát" 
+                    WidthRequest="200" 
+                    Grid.Column="2"
+                    Command="{Binding ThoatButtonCommand}"/>
+        </Grid>
+    </Grid>
+</toolkit:Popup>
