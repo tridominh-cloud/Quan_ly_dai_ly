@@ -7,6 +7,7 @@ using Quan_ly_dai_ly.Services;
 using Quan_ly_dai_ly.Utils;
 using System.Collections.ObjectModel;
 using System.Drawing.Printing;
+using System.Net.Http.Headers;
 
 
 namespace Quan_ly_dai_ly.ViewModels.PhieuXuatViewModels;
@@ -73,29 +74,13 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
 			MaPhieuXuat = await _phieuXuatService.GetNextAvailableIdAsync();
 
 			DanhSachHienThi.Clear();
-			for (int i=0; i<MatHangs.Count();i++)
-			{
-				DanhSachHienThi.Add(new DongHienThi
-				{
-					STT = i + 1,
-					Item = new MatHang
-					{
-						MaMatHang = 0,
-						TenMatHang = string.Empty,
-                        MaDonViTinh = 0,
-						SoLuongTon = 0
-					},
-					SoLuongXuat = 0,
-					DonGiaXuat = 0,
-				});
-			}	
-            //if (DaiLies.Any() && MatHangs.Any())
-            //{
-            //	SelectedDaiLy = DaiLies[0];
-            //	SelectedMatHang = MatHangs[0];
-            //	NoDaiLy = SelectedDaiLy.NoDaiLy;
-            //	NoToiDa = SelectedDaiLy.LoaiDaiLy.NoToiDa;
-            //}
+
+            for (int i = 0; i < MatHangs.Count(); i++)
+            {
+                var dong = CreateDongHienThi(i + 1);
+				SubscribeThanhTien_TongTien(dong);
+                DanhSachHienThi.Add(dong);
+            }
         }
 		catch (Exception ex) 
 		{
@@ -131,7 +116,31 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
 	{
 		currentPopup?.CloseAsync();
 	}
-
+	private DongHienThi CreateDongHienThi(int stt)
+	{
+		var donghienthi = new DongHienThi
+		{
+			STT = stt,
+			Item = new MatHang
+			{
+				MaMatHang = 0,
+				TenMatHang = string.Empty,
+				MaDonViTinh = 0,
+				SoLuongTon = 0
+			},
+			SoLuongXuat = 0,
+			DonGiaXuat = 0
+		};
+		return donghienthi;
+	}
+	private void SubscribeThanhTien_TongTien(DongHienThi dongHienThi)
+    {
+        dongHienThi.PropertyChanged += (s, e) =>
+        {
+            if (e.PropertyName == nameof(DongHienThi.ThanhTien))
+                OnPropertyChanged(nameof(TongTien));
+        };
+    }
     public partial class DongHienThi : ObservableObject
     {
         public int STT { get; set; }
