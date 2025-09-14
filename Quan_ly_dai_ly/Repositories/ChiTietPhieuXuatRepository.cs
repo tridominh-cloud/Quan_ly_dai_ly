@@ -19,4 +19,14 @@ public class ChiTietPhieuXuatRepository : IChiTietPhieuXuatRepository
                         .Include(mh => mh.MatHang)
                         .ToListAsync();
     }
+    public async Task<int> AddChiTietPhieuXuatAsync(ChiTietPhieuXuat newChiTietPhieuXuat)
+    {
+        await _dataContext.ChiTietPhieuXuats.AddAsync(newChiTietPhieuXuat);
+        return _dataContext.SaveChanges();
+    }
+    public async Task<int> GetNextAvailableIdAsync()
+    {
+        var maxId =  await _dataContext.ChiTietPhieuXuats.CountAsync();
+        return maxId + 1;
+    }
 }

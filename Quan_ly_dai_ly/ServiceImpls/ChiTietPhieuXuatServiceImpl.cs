@@ -1,4 +1,5 @@
-﻿using Quan_ly_dai_ly.Models;
+﻿
+using Quan_ly_dai_ly.Models;
 using Quan_ly_dai_ly.RepositoryInterfaces;
 using Quan_ly_dai_ly.Services;
 
@@ -15,5 +16,13 @@ public class ChiTietPhieuXuatServiceImpl : IChiTietPhieuXuatService
     public async Task<IEnumerable<ChiTietPhieuXuat>> GetAllChiTietPhieuXuatsAsync()
     {
         return await _chiTietPhieuXuatRepository.GetAllChiTietPhieuXuatsAsync();
+    }
+    public async Task<int> AddChiTietPhieuXuatAsync(ChiTietPhieuXuat newChiTietPhieuXuat)
+    {
+        return await _chiTietPhieuXuatRepository.AddChiTietPhieuXuatAsync(newChiTietPhieuXuat);
+    }
+    public async Task<int> GetNextAvailableIdAsync()
+    {
+        return await _chiTietPhieuXuatRepository.GetNextAvailableIdAsync();
     }
 }
