@@ -4,7 +4,7 @@
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:models="clr-namespace:Quan_ly_dai_ly.Models"
                x:Class="Quan_ly_dai_ly.Views.DaiLyViews.TraCuuDaiLyWindowView"
-               CanBeDismissedByTappingOutsideOfPopup="True"
+               CanBeDismissedByTappingOutsideOfPopup="False"
                Size="1100,650"
                Color="Transparent">
     <Border Stroke="LightGray"
@@ -13,7 +13,7 @@
             BackgroundColor="White">
         <Grid RowDefinitions="50, *">
             <Grid ColumnDefinitions="*,*" Grid.Row="0">
-                <Label Text="Lập phiếu xuất hàng"
+                <Label Text="Tra cứu đại lý"
                        Grid.Column="0"
                        Margin="20,0,0,0"
                        VerticalOptions="Center"
@@ -41,7 +41,7 @@
                     Margin="10"
                     Padding="10"
                     BackgroundColor="#f7f9fd">
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*"
                       RowSpacing="10">
                     <!--Dòng 0 -->
                     <Grid Grid.Row="0"  ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="10">
@@ -59,7 +59,7 @@
                         <Border Grid.Column="0" 
                                 Style="{StaticResource PrimaryBorderStyle}"
                                 HeightRequest="30">
-                            <Entry Text="{Binding MaDaiLy}" Placeholder="Có chứa"/>
+                            <Entry Text="{Binding MaDaiLy, TargetNullValue=''}" Placeholder="Có chứa"/>
                         </Border>
 
                         <Border Grid.Column="1" 
@@ -111,13 +111,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding NgayTiepNhanStart, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding NgayTiepNhanEnd, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                         </Grid>
 
@@ -146,13 +146,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding NoToiDaStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding NoToiDaEnd}"/>
                             </Border>
                         </Grid>
 
@@ -162,13 +162,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyStart}"/>
+                                <Entry Text="{Binding MaPhieuXuatStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                                <Entry Text="{Binding MaPhieuXuatEnd}"/>
                             </Border>
                         </Grid>
                     </Grid>
@@ -181,13 +181,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding NgayLapPhieuXuatStart, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding NgayLapPhieuXuatEnd, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                         </Grid>
 
@@ -197,13 +197,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyStart}"/>
+                                <Entry Text="{Binding TongGiaTriPhieuXuatStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                                <Entry Text="{Binding TongGiaTriPhieuXuatEnd}"/>
                             </Border>
                         </Grid>
                     </Grid>
@@ -236,13 +236,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding SoLuongXuatStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding SoLuongXuatEnd}"/>
                             </Border>
                         </Grid>
 
@@ -252,13 +252,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyStart}"/>
+                                <Entry Text="{Binding DonGiaXuatStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                                <Entry Text="{Binding DonGiaXuatEnd}"/>
                             </Border>
                         </Grid>
                     </Grid>
@@ -271,13 +271,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding ThanhTienStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding ThanhTienEnd}"/>
                             </Border>
                         </Grid>
 
@@ -287,13 +287,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyStart}"/>
+                                <Entry Text="{Binding SoLuongTonStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                                <Entry Text="{Binding SoLuongTonEnd}"/>
                             </Border>
                         </Grid>
                     </Grid>
@@ -306,13 +306,13 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                                <Entry Text="{Binding NgayLapPhieuThuTienStart, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                                <Entry Text="{Binding NgayLapPhieuThuTienEnd, StringFormat='{0:dd/MM/yyyy}'}"/>
                             </Border>
                         </Grid>
 
@@ -322,21 +322,21 @@
                             <Border Grid.Column="2" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyStart}"/>
+                                <Entry Text="{Binding TongGiaTriPhieuThuTienStart}"/>
                             </Border>
                             <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
                             <Border Grid.Column="4" 
                                     Style="{StaticResource PrimaryBorderStyle}"
                                     HeightRequest="30">
-                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                                <Entry Text="{Binding TongGiaTriPhieuThuTienEnd}"/>
                             </Border>
                         </Grid>
                     </Grid>
 
                     <!--Dòng 9 -->
                     <Grid Grid.Row="9" ColumnDefinitions="*,*" ColumnSpacing="20">
-                        <Button Grid.Column="0" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="End" Text="Tra cứu đại lý"/>
-                        <Button Grid.Column="1" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="Start" WidthRequest="70" Text="Thoát"/>
+                        <Button Grid.Column="0" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="End" Text="Tra cứu đại lý" Command="{Binding TraCuuDaiLyButtonCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="Start" WidthRequest="70" Text="Thoát" Command="{Binding ThoatButtonCommand}"/>
                     </Grid>
 
                     <!--Dòng 10 -->
@@ -357,19 +357,21 @@
 
                     <!--Dòng 11 -->
                     <CollectionView Grid.Row="11"
-                                    ItemsSource="{Binding DanhSachDaiLy}">
+                                    ItemsSource="{Binding DanhSachDongHienThi}"
+                                    BackgroundColor="White">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:DaiLy">
-                                <Grid ColumnDefinitions=".25*,*,*,*,*,*,*,*,*">
+                            <DataTemplate>
+                                <Grid ColumnDefinitions=".25*,*,*,*,*,*,*,*,*"
+                                      Padding="5">
                                     <Label Grid.Column="0" Text="{Binding STT}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="1" Text="{Binding TenDaiLy}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="2" Text="{Binding DienThoai}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="3" Text="{Binding DiaChi}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="4" Text="{Binding Email}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="5" Text="{Binding NgayTiepNhan}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="6" Text="{Binding NoDaiLy}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="7" Text="{Binding LoaiDaiLy.TenLoaiDaiLy}" HorizontalOptions="Center" FontSize="15"/>
-                                    <Label Grid.Column="8" Text="{Binding Quan.TenQuan}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="1" Text="{Binding DaiLy.Ten}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="2" Text="{Binding DaiLy.DienThoai}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="3" Text="{Binding DaiLy.DiaChi}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="4" Text="{Binding DaiLy.Email}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="5" Text="{Binding DaiLy.NgayTiepNhan, StringFormat='{0:dd/MM/yyyy}'}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="6" Text="{Binding DaiLy.NoDaiLy, StringFormat='{0:N0} VNĐ'}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="7" Text="{Binding DaiLy.LoaiDaiLy.TenLoaiDaiLy}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="8" Text="{Binding DaiLy.Quan.TenQuan}" HorizontalOptions="Center" FontSize="15"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
