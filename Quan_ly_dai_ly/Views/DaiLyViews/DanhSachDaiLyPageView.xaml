@@ -25,7 +25,7 @@
         <HorizontalStackLayout Grid.Row="1" Grid.Column="0"
                                Spacing="10"
                                HorizontalOptions="Start">
-            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Tra cứu đại lý" Command="{Binding ClickButtonCommand}"/>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Text="Tra cứu đại lý" Command="{Binding TraCuuDaiLyButtonCommand}"/>
             <Button Style="{StaticResource PrimaryButtonStyle}" Text="Load" Command="{Binding LoadButtonCommand}"/>
         </HorizontalStackLayout>
 

@@ -61,4 +61,22 @@ public partial class DanhSachDaiLyPageViewModel : BaseViewModel
 			await AlertUtil.ShowErrorAlert($"Không thể mở popup thêm đại lý: {ex.Message}");
 		}
 	}
+	[RelayCommand]
+	private async Task TraCuuDaiLyButton()
+	{
+		try
+		{
+			var traCuuDaiLyView = _serviceProvider.GetRequiredService<TraCuuDaiLyWindowView>();
+			var mainPage = Application.Current?.MainPage;
+
+			if (mainPage is not null)
+			{
+                await mainPage.ShowPopupAsync(traCuuDaiLyView);
+			}
+		}
+		catch (Exception ex)
+		{
+			await AlertUtil.ShowErrorAlert($"Không thể mở popup tra cứu đại lý: {ex.Message}");
+		}
+	}
 }

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:models="clr-namespace:Quan_ly_dai_ly.Models"
+               x:Class="Quan_ly_dai_ly.Views.DaiLyViews.TraCuuDaiLyWindowView"
+               CanBeDismissedByTappingOutsideOfPopup="True"
+               Size="1100,650"
+               Color="Transparent">
+    <Border Stroke="LightGray"
+            StrokeShape="RoundRectangle 5"
+            StrokeThickness="0.5"
+            BackgroundColor="White">
+        <Grid RowDefinitions="50, *">
+            <Grid ColumnDefinitions="*,*" Grid.Row="0">
+                <Label Text="Lập phiếu xuất hàng"
+                       Grid.Column="0"
+                       Margin="20,0,0,0"
+                       VerticalOptions="Center"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       FontFamily="Roboto"/>
+
+                <Button Text="×"
+                        FontAttributes="Bold"
+                        Margin="0,0,10,0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        Command="{Binding ThoatButtonCommand}"/>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    Stroke="Gray"
+                    StrokeShape="RoundRectangle 5"
+                    StrokeThickness="0.5"
+                    Margin="10"
+                    Padding="10"
+                    BackgroundColor="#f7f9fd">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                      RowSpacing="10">
+                    <!--Dòng 0 -->
+                    <Grid Grid.Row="0"  ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="10">
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="0" FontSize="16" Text="Mã đại lý"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="1" FontSize="16" Text="Tên đại lý"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="2" FontSize="16" Text="Điện thoại"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="3" FontSize="16" Text="Địa chỉ"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="4" FontSize="16" Text="Email"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="5" FontSize="16" Text="Tên loại đại lý"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="6" FontSize="16" Text="Tên quận"/>
+                    </Grid>
+                
+                    <!--Dòng 1 -->
+                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="10">
+                        <Border Grid.Column="0" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Entry Text="{Binding MaDaiLy}" Placeholder="Có chứa"/>
+                        </Border>
+
+                        <Border Grid.Column="1" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Entry Text="{Binding TenDaiLy}" Placeholder="Có chứa"/>
+                        </Border>
+
+                        <Border Grid.Column="2" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Entry Text="{Binding DienThoai}" Placeholder="Có chứa"/>
+                        </Border>
+
+                        <Border Grid.Column="3" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Entry Text="{Binding DiaChi}" Placeholder="Có chứa"/>
+                        </Border>
+
+                        <Border Grid.Column="4" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Entry Text="{Binding Email}" Placeholder="Có chứa"/>
+                        </Border>
+                        <Border Grid.Column="5" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Picker ItemDisplayBinding="{Binding TenLoaiDaiLy}"
+                                    ItemsSource="{Binding LoaiDaiLies}"
+                                    SelectedItem="{Binding SelectedLoaiDaiLy}">
+                            </Picker>
+                        </Border>
+                        <Border Grid.Column="6" 
+                                Style="{StaticResource PrimaryBorderStyle}"
+                                HeightRequest="30">
+                            <Picker ItemDisplayBinding="{Binding TenQuan}"
+                                    ItemsSource="{Binding Quans}"
+                                    SelectedItem="{Binding SelectedQuan}">
+                            </Picker>
+                        </Border>
+                    </Grid>
+                
+                    <!--Dòng 2 -->
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Ngày tiếp nhập"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Nợ đại lý"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 3 -->
+                    <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Nợ tối đa theo loại đại lý"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Mã phiễu xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 4 -->
+                    <Grid Grid.Row="4" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Ngày lập Phiếu xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Tổng giá trị Phiếu xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 5 -->
+                    <Grid Grid.Row="5" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Tên Mặt hàng xuất"/>
+                            <Picker Grid.Column="1"
+                                    HeightRequest="30"
+                                    ItemDisplayBinding="{Binding TenMatHang}"
+                                    ItemsSource="{Binding MatHangs}"
+                                    SelectedItem="{Binding SelectedMatHang}">
+                            </Picker>
+                            <Label Grid.Column="2" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Tên Đơn vị tính"/>
+                            <Picker Grid.Column="3"
+                                    HeightRequest="30"
+                                    ItemDisplayBinding="{Binding TenDonViTinh}"
+                                    ItemsSource="{Binding DonViTinhs}"
+                                    SelectedItem="{Binding SelectedDonViTinh}">
+                            </Picker>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 6 -->
+                    <Grid Grid.Row="6" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Số lượng xuất của Mặt hàng xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Đơn giá xuất của Mặt hàng xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 7 -->
+                    <Grid Grid.Row="7" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Thành tiền của Mặt hàng xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Số lượng tồn của Mặt hàng xuất"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 8 -->
+                    <Grid Grid.Row="8" ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <Grid Grid.Column="0" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Ngày lập phiếu thu tiền"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NgayTiepNhanEnd}"/>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,*,Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" Text="Tổng giá trị phiếu thu tiền"/>
+                            <Label Grid.Column="1" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="từ"/>
+                            <Border Grid.Column="2" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyStart}"/>
+                            </Border>
+                            <Label Grid.Column="3" Style="{StaticResource PrimaryLabelStyle}" VerticalOptions="Center" FontSize="16" TextColor="Red" Text="đến"/>
+                            <Border Grid.Column="4" 
+                                    Style="{StaticResource PrimaryBorderStyle}"
+                                    HeightRequest="30">
+                                <Entry Text="{Binding NoDaiLyEnd}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <!--Dòng 9 -->
+                    <Grid Grid.Row="9" ColumnDefinitions="*,*" ColumnSpacing="20">
+                        <Button Grid.Column="0" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="End" Text="Tra cứu đại lý"/>
+                        <Button Grid.Column="1" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="Start" WidthRequest="70" Text="Thoát"/>
+                    </Grid>
+
+                    <!--Dòng 10 -->
+                    <Grid Grid.Row="10"
+                          ColumnDefinitions=".25*,*,*,*,*,*,*,*,*"
+                          BackgroundColor="White"
+                          Padding="5,10,10,10">
+                        <Label Grid.Column="0" Text="STT" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="1" Text="Tên đại lý" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="2" Text="Điện thoại" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="3" Text="Địa chỉ" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="4" Text="Email" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="5" Text="Ngày tiếp nhận" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="6" Text="Nợ của đại lý" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="7" Text="Tên loại đại lý" HorizontalOptions="Center" FontSize="15"/>
+                        <Label Grid.Column="8" Text="Tên quận" HorizontalOptions="Center" FontSize="15"/>
+                    </Grid>
+
+                    <!--Dòng 11 -->
+                    <CollectionView Grid.Row="11"
+                                    ItemsSource="{Binding DanhSachDaiLy}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:DaiLy">
+                                <Grid ColumnDefinitions=".25*,*,*,*,*,*,*,*,*">
+                                    <Label Grid.Column="0" Text="{Binding STT}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="1" Text="{Binding TenDaiLy}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="2" Text="{Binding DienThoai}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="3" Text="{Binding DiaChi}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="4" Text="{Binding Email}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="5" Text="{Binding NgayTiepNhan}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="6" Text="{Binding NoDaiLy}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="7" Text="{Binding LoaiDaiLy.TenLoaiDaiLy}" HorizontalOptions="Center" FontSize="15"/>
+                                    <Label Grid.Column="8" Text="{Binding Quan.TenQuan}" HorizontalOptions="Center" FontSize="15"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</toolkit:Popup>

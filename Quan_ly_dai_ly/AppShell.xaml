@@ -8,7 +8,11 @@
     xmlns:phieuxuatviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuXuatViews"
     Title="Quan_ly_dai_ly">
 
-    <ShellContent
+    <TabBar>
+        <ShellContent
         Title="Danh sách đại lý"
-        ContentTemplate="{DataTemplate phieuxuatviews:DanhSachPhieuXuatHangPageView}"/>
+        ContentTemplate="{DataTemplate dailyviews:DanhSachDaiLyPageView}"/>
+        
+    </TabBar>
+
 </Shell>
