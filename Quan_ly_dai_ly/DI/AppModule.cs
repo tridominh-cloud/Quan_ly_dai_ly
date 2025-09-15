@@ -53,12 +53,13 @@ public static class AppModule
         services.AddTransient<ThemDaiLyWindowView>();
         services.AddTransient<DanhSachDaiLyPageView>();
         services.AddTransient<LapPhieuXuatHangWindowView>();
-
+        services.AddTransient<TraCuuDaiLyWindowView>();
         //Đăng kí ViewModel
         services.AddTransient<DanhSachDaiLyPageViewModel>();
         services.AddTransient<ThemDaiLyWindowViewModel>();
         services.AddTransient<DanhSachPhieuXuatHangPageViewModel>();
         services.AddTransient<LapPhieuXuatHangWindowViewModel>();
+        services.AddTransient<TraCuuDaiLyWindowViewModel>();
 
         return services;
     }

@@ -12,12 +12,28 @@
             BackgroundColor="White"
             Padding="10">
         <Grid RowDefinitions="50,*,.2*">
-            <Label Text="Lập phiếu xuất hàng"
-                   Grid.Row="0"
-                   Margin="20,0,0,0"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   FontFamily="Roboto"/>
+            <Grid ColumnDefinitions="*,*" Grid.Row="0">
+                <Label Text="Lập phiếu xuất hàng"
+                       Grid.Column="0"
+                       Margin="20,0,0,0"
+                       VerticalOptions="Center"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       FontFamily="Roboto"/>
+
+                <Button Text="×"
+                        FontAttributes="Bold"
+                        Margin="0,0,10,0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        Command="{Binding ThoatButtonCommand}"/>
+            </Grid>
+
 
             <Border Grid.Row="1"
                     Margin="10,10,10,10"
@@ -26,7 +42,7 @@
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 5"
                     BackgroundColor="#f7f9fd">
-                <Grid RowDefinitions="Auto,*">
+                <Grid RowDefinitions="Auto,*" RowSpacing="5">
                     <Grid Grid.Row="0"
                           ColumnDefinitions="*,*,*,*,*,*"
                           RowDefinitions="*,*"
@@ -128,7 +144,7 @@
                                         <Picker Grid.Column="1" 
                                                 ItemDisplayBinding="{Binding TenMatHang}" 
                                                 ItemsSource="{Binding Source={x:Reference MyCollectionView}, Path=BindingContext.MatHangs}"
-                                                SelectedItem="{Binding Item}"/>
+                                                SelectedItem="{Binding SelectedMatHang}"/>
                                         
                                         <Border Grid.Column="2"
                                                 Stroke="Gray"
@@ -136,7 +152,7 @@
                                                 StrokeThickness="0.2"
                                                 BackgroundColor="White"
                                                 Padding="10">
-                                            <Label Text="{Binding Item.DonViTinh.TenDonViTinh}"/>
+                                            <Label Text="{Binding SelectedMatHang.DonViTinh.TenDonViTinh}"/>
                                         </Border>
                                         
                                         <Border Grid.Column="3"
@@ -145,11 +161,11 @@
                                                 StrokeThickness="0.2"
                                                 BackgroundColor="White"
                                                 Padding="10">
-                                            <Label Text="{Binding Item.SoLuongTon}"/>
+                                            <Label Text="{Binding SelectedMatHang.SoLuongTon}"/>
                                         </Border>
-                                       
-                                        <Entry Text="{Binding SoLuongXuat}" Grid.Column="4" Keyboard="Numeric"/>
-                                        <Entry Text="{Binding DonGiaXuat}" Grid.Column="5" Keyboard="Numeric"/>
+
+                                        <Entry Text="{Binding SoLuongXuat, Mode=TwoWay, TargetNullValue=0, FallbackValue=0}" Grid.Column="4" Keyboard="Numeric"/>
+                                        <Entry Text="{Binding DonGiaXuat, Mode=TwoWay, TargetNullValue=0, FallbackValue=0}" Grid.Column="5" Keyboard="Numeric"/>
 
                                         <Border Grid.Column="6"
                                                 Stroke="Gray"

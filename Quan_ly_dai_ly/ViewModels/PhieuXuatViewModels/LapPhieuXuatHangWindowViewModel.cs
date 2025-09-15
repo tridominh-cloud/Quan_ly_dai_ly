@@ -54,8 +54,8 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
 	
     [ObservableProperty] private ObservableCollection<DaiLy> daiLies = [];
     [ObservableProperty] private DaiLy selectedDaiLy = null!;
+
     [ObservableProperty] private ObservableCollection<MatHang> matHangs = [];
-    [ObservableProperty] private MatHang selectedMatHang = null!;
 
 	[ObservableProperty]
 	[NotifyPropertyChangedFor(nameof(TongTien))]
@@ -101,8 +101,21 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
                 TongGiaTri = TongTien
             };
             await _phieuXuatService.AddPhieuXuatAsync(newPhieuXuat);
-            await AlertUtil.ShowSuccessAlert("Thêm phiếu xuất thành công");
+			
+			foreach(var ct in DanhSachHienThi.Where(x => x.SelectedMatHang?.MaMatHang != 0))
+			{
+				var chiTiet = new ChiTietPhieuXuat
+				{
+					MaChiTietPhieuXuat = await _chiTietPhieuXuatService.GetNextAvailableIdAsync(),
+					MaPhieuXuat = newPhieuXuat.MaPhieuXuat,
+					MaMatHang = ct.SelectedMatHang?.MaMatHang ?? 0,
+					SoLuongXuat = ct.SoLuongXuat ?? 0,
+					DonGiaXuat = ct.DonGiaXuat ?? 0
+				};
+                await _chiTietPhieuXuatService.AddChiTietPhieuXuatAsync(chiTiet);
+            }	
 
+            await AlertUtil.ShowSuccessAlert("Thêm phiếu xuất thành công");
             currentPopup?.CloseAsync();
         }
 		catch (Exception ex)
@@ -110,7 +123,16 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
 			await AlertUtil.ShowErrorAlert($"Lỗi: {ex}");
 		}
 	}
-
+	[RelayCommand]
+	private void PhieuXuatMoiButton()
+	{
+		foreach (var ht in DanhSachHienThi)
+		{
+			ht.SelectedMatHang = null;
+			ht.SoLuongXuat = 0;
+			ht.DonGiaXuat = 0;
+		}	
+	}
 	[RelayCommand]
 	private void ThoatButton()
 	{
@@ -121,7 +143,7 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
 		var donghienthi = new DongHienThi
 		{
 			STT = stt,
-			Item = new MatHang
+			SelectedMatHang = new MatHang
 			{
 				MaMatHang = 0,
 				TenMatHang = string.Empty,
@@ -145,7 +167,7 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
     {
         public int STT { get; set; }
 		[ObservableProperty]
-		private MatHang? item;
+		private MatHang? selectedMatHang;
         
 		[ObservableProperty]
         [NotifyPropertyChangedFor(nameof(ThanhTien))]
@@ -158,3 +180,4 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
         public long ThanhTien => (SoLuongXuat ?? 0) * (DonGiaXuat ?? 0);
     }
 }
+//hiện tại tôi muốn lấy mã mặt hàng từ picker mặt hàng, mà picker đó nằm trong collectionview nên sẽ có nhiều picker, làm sao để lấy 1 mã mặt hành cụ thể
