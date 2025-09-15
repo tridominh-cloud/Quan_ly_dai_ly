@@ -29,7 +29,10 @@ public partial class ThemDaiLyWindowViewModel : BaseViewModel
 
     private Popup? currentPopup;
 
-    public ThemDaiLyWindowViewModel(IDaiLyService daiLyService, ILoaiDaiLyService loaiDaiLyService, IQuanService quanService, IThamSoService thamSoService)
+    public ThemDaiLyWindowViewModel(IDaiLyService daiLyService, 
+                                    ILoaiDaiLyService loaiDaiLyService, 
+                                    IQuanService quanService, 
+                                    IThamSoService thamSoService)
     {
         _daiLyService = daiLyService;
         _loaiDaiLyService = loaiDaiLyService;
