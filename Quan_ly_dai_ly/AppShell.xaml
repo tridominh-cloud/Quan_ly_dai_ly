@@ -7,12 +7,12 @@
     xmlns:dailyviews="clr-namespace:Quan_ly_dai_ly.Views.DaiLyViews"
     xmlns:phieuxuatviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuXuatViews"
     Title="Quan_ly_dai_ly">
-
     <TabBar>
         <ShellContent
         Title="Danh sách đại lý"
-        ContentTemplate="{DataTemplate dailyviews:DanhSachDaiLyPageView}"/>
-        
+        ContentTemplate="{DataTemplate dailyviews:DanhSachDaiLyPageView}" />
+        <ShellContent
+        Title="Danh sách phiếu xuất"
+        ContentTemplate="{DataTemplate phieuxuatviews:DanhSachPhieuXuatHangPageView}" />
     </TabBar>
-
 </Shell>

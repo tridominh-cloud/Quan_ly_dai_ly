@@ -7,7 +7,7 @@
              x:DataType="viewmodels:DanhSachDaiLyPageViewModel"
              Title="DanhSachDaiLyPage"
              Shell.NavBarIsVisible="False">
-    
+
     <Grid RowDefinitions="50, Auto, *, Auto"
           ColumnDefinitions="*, *"
           Padding="10"
