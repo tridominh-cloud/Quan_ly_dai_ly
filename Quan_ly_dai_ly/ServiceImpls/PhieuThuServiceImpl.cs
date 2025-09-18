@@ -15,4 +15,12 @@ public class PhieuThuServiceImpl : IPhieuThuService
     {
         return await _phieuThuRepsitory.GetAllPhieuThusAsync();
     }
+    public async Task<int>GetNextIdAvailable()
+    {
+        return await _phieuThuRepsitory.GetNextIdAvailable();
+    }
+    public async Task<int> AddPhieuThuAsync(PhieuThu newPhieuThu)
+    {
+        return await _phieuThuRepsitory.AddPhieuThuAsync(newPhieuThu);
+    }
 }

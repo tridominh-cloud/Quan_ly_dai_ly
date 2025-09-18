@@ -79,12 +79,13 @@
                                     <Label Grid.Column="0" HorizontalOptions="Center" Text="{Binding MaPhieuXuat}"/>
                                     <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding NgayLap, StringFormat='{0:dd/MM/yyyy}'}"/>
                                     <Label Grid.Column="2" HorizontalOptions="Center" Text="{Binding DaiLy.Ten}"/>
-                                    <Label Grid.Column="3" HorizontalOptions="Center" Text="{Binding TongGiaTri}"/>
+                                    <Label Grid.Column="3" HorizontalOptions="Center" Text="{Binding TongGiaTri, StringFormat='{0:N0} VNĐ'}"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
+                
             </Grid>
         </Border>
     </Grid>

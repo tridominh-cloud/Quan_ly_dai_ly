@@ -112,6 +112,9 @@
 	  <MauiXaml Update="Views\PhieuThuViews\DanhSachPhieuThuPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PhieuThuViews\LapPhieuThuTienWindowView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PhieuXuatViews\DanhSachPhieuXuatHangPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

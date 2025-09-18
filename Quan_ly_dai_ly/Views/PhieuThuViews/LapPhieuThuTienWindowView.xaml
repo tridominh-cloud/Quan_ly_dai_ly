@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="Quan_ly_dai_ly.Views.PhieuThuViews.LapPhieuThuTienWindowView"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Size="700,500"
+               Color="White">
+    <Border Stroke="LightGray"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 5"
+            Padding="10">
+        <Grid RowDefinitions="50,*,50">
+            <Grid  ColumnDefinitions="*,*"
+                   Grid.Row="0">
+                <Label Text="Lập phiếu thu tiền"
+                       Grid.Column="0"
+                       Margin="20,0,0,0"
+                       VerticalOptions="Center"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       FontFamily="Roboto"/>
+                <Button Text="×"
+                        FontAttributes="Bold"
+                        Margin="0,0,10,0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        Command="{Binding ThoatButtonCommand}"/>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    Stroke="LightGray"
+                    StrokeShape="RoundRectangle 5"
+                    StrokeThickness="0.5"
+                    BackgroundColor="#f7f9fd"
+                    Padding="10">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                      ColumnDefinitions="*,*,*"
+                      RowSpacing="10"
+                      ColumnSpacing="10">
+                    
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="0" Grid.Column="0" Text="Tên đại lý"/>
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="0" Grid.Column="1" Text="Điện Thoại"/>
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="0" Grid.Column="2" Text="Email"/>
+
+                    <Picker Grid.Row="1"
+                            Grid.Column="0"
+                            HeightRequest="40"
+                            ItemDisplayBinding="{Binding Ten}"
+                            ItemsSource="{Binding DaiLies}"
+                            SelectedItem="{Binding SelectedDaiLy}">
+                    </Picker>
+                    <Border Style="{StaticResource PrimaryBorderStyle}" 
+                            Grid.Row="1" 
+                            Grid.Column="1"
+                            Padding="10">
+                        <Label Text="{Binding SelectedDaiLy.DienThoai}" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource PrimaryBorderStyle}" 
+                            Grid.Row="1" 
+                            Grid.Column="2"
+                            Padding="10">
+                        <Label Text="{Binding SelectedDaiLy.Email}" VerticalOptions="Center"/>
+                    </Border>
+
+                    <Label Style="{StaticResource PrimaryLabelStyle}" 
+                           Grid.Row="2" 
+                           Grid.Column="0" 
+                           Text="Địa chỉ"/>
+                    
+                    <Border Style="{StaticResource PrimaryBorderStyle}" 
+                            Grid.Row="3" 
+                            Grid.Column="0" 
+                            Grid.ColumnSpan="3"
+                            HeightRequest="40"
+                            Padding="10">
+                        <Label Text="{Binding SelectedDaiLy.DiaChi}" VerticalOptions="Center"/>
+                    </Border>
+
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                           Text="Quy định tiền thu không vượt quá tiền nợ"/>
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="4" Grid.Column="2" Text="Nợ của đại lý"/>
+
+                    <Border Style="{StaticResource PrimaryBorderStyle}" 
+                            Grid.Row="5" 
+                            Grid.Column="0" 
+                            Grid.ColumnSpan="2"
+                            HeightRequest="40">
+                        <Label Text="{Binding QuyDinhThuTien}"/>
+                    </Border>
+                    <Border Style="{StaticResource PrimaryBorderStyle}" 
+                            Grid.Row="5" 
+                            Grid.Column="2"
+                            Padding="10">
+                        <Label Text="{Binding SelectedDaiLy.NoDaiLy}" VerticalOptions="Center"/>
+                    </Border>
+
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="6" Grid.Column="0" Text="Ngày thu tiền"/>
+                    <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Row="6" Grid.Column="2" Text="Số tiền thu"/>
+
+                    <DatePicker HeightRequest="40"
+                                WidthRequest="434"
+                                HorizontalOptions="Start"
+                                Grid.Row="7" 
+                                Grid.Column="0" 
+                                Grid.ColumnSpan="2" 
+                                Date="{Binding NgayThuTien}"/>
+                    <Border Grid.Row="7" Grid.Column="2"
+                            HeightRequest="40"
+                            Style="{StaticResource PrimaryBorderStyle}">
+                        <Entry Text="{Binding SoTienThu}"/>
+                    </Border>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
+                <Button Style="{StaticResource PrimaryButtonStyle}" 
+                        Grid.Column="0" 
+                        Text="Lập phiếu thu tiền" 
+                        WidthRequest="150"
+                        HorizontalOptions="Start"
+                        Command="{Binding LapPhieuThuTienButton}"/>
+                <Button Style="{StaticResource PrimaryButtonStyle}" 
+                        Grid.Column="1" 
+                        Text="Tìm đại lý"
+                        HorizontalOptions="Center"
+                        Command="{Binding TimDaiLyButton}"/>
+                <Button Style="{StaticResource PrimaryButtonStyle}" 
+                        Grid.Column="2" 
+                        Text="Thoát" 
+                        HorizontalOptions="End"
+                        Command="{Binding ThoatButtonCommand}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</toolkit:Popup>
