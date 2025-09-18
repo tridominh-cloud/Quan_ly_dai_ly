@@ -3,7 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Quan_ly_dai_ly.Views.PhieuXuatViews.DanhSachPhieuXuatHangPageView"
              Title="Danh sách phiếu xuất hàng"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*" Padding="10">
+            <Label Text="UIT Together"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#2075bb"/>
+            <HorizontalStackLayout Grid.Column="1"
+                                   HorizontalOptions="End"
+                                   Spacing="10">
+                <Button Text="Đại lý"/>
+                <Button Text="Phiếu xuất"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </Shell.TitleView>
+    
     <Grid RowDefinitions="50,*"
           Padding="10">
         <Label Text="Danh sách phiếu xuất hàng"

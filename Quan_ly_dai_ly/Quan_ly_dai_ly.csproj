@@ -82,6 +82,9 @@
 	  <Compile Update="Views\DaiLyViews\DanhSachDaiLyPageView.xaml.cs">
 	    <DependentUpon>DanhSachDaiLyPageView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\PhieuThuViews\DanhSachPhieuThuPageView.xaml.cs">
+	    <DependentUpon>DanhSachPhieuThuPageView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PhieuXuatViews\DanhSachPhieuXuatHangPageView.xaml.cs">
 	    <DependentUpon>DanhSachPhieuXuatHangPageView.xaml</DependentUpon>
 	  </Compile>
@@ -104,6 +107,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DaiLyViews\TraCuuDaiLyWindowView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PhieuThuViews\DanhSachPhieuThuPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PhieuXuatViews\DanhSachPhieuXuatHangPageView.xaml">

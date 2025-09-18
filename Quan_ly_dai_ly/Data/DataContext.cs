@@ -18,6 +18,7 @@ public class DataContext : DbContext
     public DbSet<ThamSo> ThamSos { get; set; } = null!;
     public DbSet<MatHang> MatHangs { get; set; } = null!;
     public DbSet<PhieuXuat> PhieuXuats { get; set; } = null!;
+    public DbSet<PhieuThu> PhieuThus { get; set; } = null!;
     public DbSet<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = null!;
     public DbSet<DonViTinh> DonViTinhs { get; set; } = null!;
 
@@ -44,6 +45,12 @@ public class DataContext : DbContext
             .HasForeignKey(px => px.MaDaiLy)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<DaiLy>()
+            .HasMany(dl => dl.PhieuThus)
+            .WithOne(pt =>pt.DaiLy)
+            .HasForeignKey(pt => pt.MaDaiLy)
+            .OnDelete(DeleteBehavior.Cascade);
+
         modelBuilder.Entity<PhieuXuat>()
             .HasMany(px => px.ChiTietPhieuXuats)
             .WithOne(ctpx => ctpx.PhieuXuat)
@@ -61,6 +68,7 @@ public class DataContext : DbContext
             .WithOne(mh => mh.DonViTinh)
             .HasForeignKey(mh => mh.MaDonViTinh)
             .OnDelete(DeleteBehavior.Cascade);
+
     }
 
 }

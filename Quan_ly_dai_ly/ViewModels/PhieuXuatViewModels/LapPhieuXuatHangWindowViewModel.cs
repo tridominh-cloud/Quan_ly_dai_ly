@@ -6,8 +6,6 @@ using Quan_ly_dai_ly.Models;
 using Quan_ly_dai_ly.Services;
 using Quan_ly_dai_ly.Utils;
 using System.Collections.ObjectModel;
-using System.Drawing.Printing;
-using System.Net.Http.Headers;
 
 
 namespace Quan_ly_dai_ly.ViewModels.PhieuXuatViewModels;
@@ -165,7 +163,8 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
     }
     public partial class DongHienThi : ObservableObject
     {
-        public int STT { get; set; }
+		[ObservableProperty]
+		public int sTT = 0;
 		[ObservableProperty]
 		private MatHang? selectedMatHang;
         

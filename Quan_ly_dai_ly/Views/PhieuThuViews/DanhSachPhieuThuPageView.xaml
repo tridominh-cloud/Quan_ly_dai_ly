@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quan_ly_dai_ly.Views.PhieuThuViews.DanhSachPhieuThuPageView"
+             Title="DanhSachPhieuThuView">
+    <Grid RowDefinitions="50,*">
+        <Label Text="Danh sách phiếu thu"
+               FontAttributes="Bold"
+               FontFamily="Roboto"
+               Grid.Row="0"
+               Grid.Column="0"
+               TextColor="Black"
+               FontSize="24"/>
+        <Border Grid.Row="1"
+                BackgroundColor="#f7f9fd"
+                Stroke="LightGray"
+                StrokeThickness="0.5"
+                StrokeShape="RoundRectangle 5"
+                Padding="10"
+                Margin="10">
+            <Grid RowDefinitions="Auto,40,*"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  RowSpacing="10">
+                <HorizontalStackLayout Grid.Row="0" 
+                                       Grid.Column="0"
+                                       HorizontalOptions="End"
+                                       Spacing="10">
+                    <Button Style="{StaticResource PrimaryButtonStyle}" Text="Thêm phiếu thu" Command="{Binding ThemPhieuThuButtonCommand}"/>
+                    <Button Style="{StaticResource PrimaryButtonStyle}" Text="Tìm phiếu thu" Command="{Binding TimPhieuThuButtonCommand}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="0" 
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
+                                       Spacing="10">
+                    <Button Style="{StaticResource PrimaryButtonStyle}" Text="Xóa phiếu thu" Command="{Binding XoaPhieuThuButtonCommand}"/>
+                    <Button Style="{StaticResource PrimaryButtonStyle}" Text="Cập nhập phiếu thu" WidthRequest="160" Command="{Binding CapNhapPhieuThuButtonCommand}"/>
+                </HorizontalStackLayout>
+
+                <Border Grid.Row="1" 
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White">
+                    <Grid ColumnDefinitions="0.25*,*,*,*">
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="STT"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="Ngày thu tiền"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Tên đại lý"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Text="Số tiền thu"/>
+                    </Grid>
+                </Border>
+
+                <CollectionView Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                ItemsSource="{Binding DanhSachDongHienThi}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions=".25*,*,*,*">
+                                <Label Grid.Column="0" HorizontalOptions="Center" FontSize="15" Text="{Binding STT }"/>
+                                <Label Grid.Column="1" HorizontalOptions="Center" FontSize="15" Text="{Binding PhieuThu.NgayThuTien, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                <Label Grid.Column="2" HorizontalOptions="Center" FontSize="15" Text="{Binding PhieuThu.TenDaiLy}"/>
+                                <Label Grid.Column="3" HorizontalOptions="Center" FontSize="15" Text="{Binding PhieuThu.SoTienThu, StringFormat='{0:N0}: VNĐ'}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
