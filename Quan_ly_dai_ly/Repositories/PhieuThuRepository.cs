@@ -18,5 +18,14 @@ public class PhieuThuRepository : IPhieuThuRepository
 						.Include(pt => pt.DaiLy)
 						.ToListAsync();
 	}
-
+	public async Task<int> GetNextIdAvailable()
+	{
+		var maxId = await _dataContext.PhieuThus.MaxAsync(pt => (int?)pt.MaPhieuThu) ?? 0;
+        return maxId + 1;
+	}
+	public async Task<int>AddPhieuThuAsync(PhieuThu newPhieuThu)
+	{
+		await _dataContext.PhieuThus.AddAsync(newPhieuThu);
+		return await _dataContext.SaveChangesAsync();
+	}
 }

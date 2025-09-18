@@ -9,6 +9,8 @@ using Quan_ly_dai_ly.Views.DaiLyViews;
 using Quan_ly_dai_ly.ViewModels.DaiLyViewModels;
 using Quan_ly_dai_ly.Views.PhieuXuatViews;
 using Quan_ly_dai_ly.ViewModels.PhieuXuatViewModels;
+using Quan_ly_dai_ly.Views.PhieuThuViews;
+using Quan_ly_dai_ly.ViewModels.PhieuThuViewModels;
 namespace Quan_ly_dai_ly.DI;
 
 public static class AppModule
@@ -56,12 +58,17 @@ public static class AppModule
         services.AddTransient<DanhSachDaiLyPageView>();
         services.AddTransient<LapPhieuXuatHangWindowView>();
         services.AddTransient<TraCuuDaiLyWindowView>();
+        services.AddTransient<DanhSachPhieuThuPageView>();
+        services.AddTransient<LapPhieuThuTienWindowView>();
+
         //Đăng kí ViewModel
         services.AddTransient<DanhSachDaiLyPageViewModel>();
         services.AddTransient<ThemDaiLyWindowViewModel>();
         services.AddTransient<DanhSachPhieuXuatHangPageViewModel>();
         services.AddTransient<LapPhieuXuatHangWindowViewModel>();
         services.AddTransient<TraCuuDaiLyWindowViewModel>();
+        services.AddTransient<DanhSachPhieuThuPageViewModels>();
+        services.AddTransient<LapPhieuThuTienWindowViewModel>();
 
         return services;
     }

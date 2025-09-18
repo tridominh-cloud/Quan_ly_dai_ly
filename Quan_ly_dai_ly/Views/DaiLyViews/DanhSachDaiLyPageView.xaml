@@ -6,8 +6,22 @@
              xmlns:viewmodels="clr-namespace:Quan_ly_dai_ly.ViewModels.DaiLyViewModels"
              x:DataType="viewmodels:DanhSachDaiLyPageViewModel"
              Title="DanhSachDaiLyPage"
-             Shell.NavBarIsVisible="False">
-
+             Shell.NavBarIsVisible="True">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*" Padding="10">
+            <Label Text="UIT Together"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#2075bb"/>
+            <HorizontalStackLayout Grid.Column="1"
+                                   HorizontalOptions="End"
+                                   Spacing="10">
+                <Button Text="Đại lý"/>
+                <Button Text="Phiếu xuất"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </Shell.TitleView>
+    
     <Grid RowDefinitions="50, Auto, *, Auto"
           ColumnDefinitions="*, *"
           Padding="10"
@@ -52,8 +66,7 @@
                     <Label Grid.Row="0" Grid.Column="6" Text="Ngày tiếp nhận" HorizontalOptions="Center" FontSize="15"/>
                     <Label Grid.Row="0" Grid.Column="7" Text="Tiền nợ" HorizontalOptions="Center" FontSize="15"/>
                 </Grid>
-
-
+                
                 <CollectionView Grid.Row="1"
                                 ItemsSource="{Binding DanhSachDaiLy}"
                                 VerticalScrollBarVisibility="Always"
