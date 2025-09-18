@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Quan_ly_dai_ly.Views.PhieuXuatViews.DanhSachPhieuXuatHangPageView"
              Title="Danh sách phiếu xuất hàng"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
     <Shell.TitleView>
         <Grid ColumnDefinitions="Auto,*" Padding="10">
             <Label Text="UIT Together"
