@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:Quan_ly_dai_ly"
     xmlns:dailyviews="clr-namespace:Quan_ly_dai_ly.Views.DaiLyViews"
     xmlns:phieuxuatviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuXuatViews"
-    xmlns:phieuthuviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuThuViews" 
+    xmlns:phieuthuviews="clr-namespace:Quan_ly_dai_ly.Views.PhieuThuViews"
+    xmlns:baocaoviews="clr-namespace:Quan_ly_dai_ly.Views.BaoCaoViews"
     Title="Quan_ly_dai_ly">
     <TabBar>
         <ShellContent
@@ -18,5 +19,8 @@
         <ShellContent
             Title="Danh sách phiếu thu"
             ContentTemplate="{DataTemplate phieuthuviews:DanhSachPhieuThuPageView}"/>
+        <ShellContent
+            Title="Báo cáo doanh số"
+            ContentTemplate="{DataTemplate baocaoviews:LapBaoCaoDoanhSoView}"/>
     </TabBar>
 </Shell>

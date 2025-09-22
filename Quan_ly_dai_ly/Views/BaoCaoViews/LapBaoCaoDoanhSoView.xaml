@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quan_ly_dai_ly.Views.BaoCaoViews.LapBaoCaoDoanhSoView"
+             Title="LapBaoCaoDoanhSoView">
+    <Border Stroke="LightGray"
+            StrokeShape="RoundRectangle 5"
+            StrokeThickness="0.5"
+            BackgroundColor="White">
+        <Grid RowDefinitions="50, *">
+            <Grid ColumnDefinitions="*,*" Grid.Row="0">
+                <Label Text="Tra cứu đại lý"
+                       Grid.Column="0"
+                       Margin="20,0,0,0"
+                       VerticalOptions="Center"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       FontFamily="Roboto"/>
+
+                <Button Text="×"
+                        FontAttributes="Bold"
+                        Margin="0,0,10,0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        Command="{Binding ThoatButtonCommand}"/>
+            </Grid>
+            <Border Grid.Row="1"
+                    Stroke="LightGray"
+                    StrokeShape="RoundRectangle 5"
+                    StrokeThickness="0.5"
+                    BackgroundColor="#f7f9fd"
+                    Padding="10">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="10">
+                    <Grid ColumnDefinitions="*,*,*,*,*" Grid.Row="0" ColumnSpacing="20">
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="0" Text="Năm lập báo cáo"/>
+                        <Label Style="{StaticResource PrimaryLabelStyle}" Grid.Column="1" Text="Tháng lập báo cáo"/>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*,*,*,*,*" Grid.Row="1" ColumnSpacing="20">
+                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="0" HeightRequest="40">
+                            <Entry Text="{Binding NamLapBaoCao}"/>
+                        </Border>
+                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="1" HeightRequest="40">
+                            <Entry Text="{Binding ThangLapBaoCao}"/>
+                        </Border>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="20" Grid.Row="2">
+                        <Button Style="{StaticResource PrimaryButtonStyle}" Grid.Column="0" HorizontalOptions="End" WidthRequest="180" Text="Lập báo cáo doanh số"/>
+                        <Button Style="{StaticResource PrimaryButtonStyle}" Grid.Column="1" HorizontalOptions="Start" Text="Thoát"/>
+                    </Grid>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Grid.Row="3">
+                        <Label Style="{StaticResource PrimaryLabelStyle}" 
+                               Text="Tổng doanh số trong tháng của tất cả đại lý:" 
+                               VerticalOptions="Center"/>
+                        <Border Style="{StaticResource PrimaryBorderStyle}" 
+                                HeightRequest="40" 
+                                WidthRequest="200">
+                            <Label Text="{Binding TongDoanhSo}"/>
+                        </Border>
+                    </HorizontalStackLayout>
+                    
+                    <Grid ColumnDefinitions="0.25*,*,*,1.5*,*" Grid.Row="4">
+                        <Label Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="STT"/>
+                        <Label Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="TÊN ĐẠI LÝ"/>
+                        <Label Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="SỐ LƯỢNG PHIẾU XUẤT"/>
+                        <Label Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="TỔNG GIÁ TRỊ GIAO DỊCH TRONG THÁNG"/>
+                        <Label Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="TỈ LỆ"/>
+                    </Grid>
+
+                    <CollectionView ItemsSource="{Binding DongHienThi}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="0.25*,*,*,1.5*,*">
+                                    <Label Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding STT}"/>
+                                    <Label Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding DaiLy.TenDaiLy}"/>
+                                    <Label Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding SoLuongPhieuXuat}"/>
+                                    <Label Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding TongGiaiDich}"/>
+                                    <Label Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding TiLe}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                
+            </Border>
+        </Grid>
+    </Border>
+</ContentPage>
