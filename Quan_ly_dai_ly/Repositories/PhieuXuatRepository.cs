@@ -16,6 +16,7 @@ public class PhieuXuatRepository : IPhieuXuatRepository
     {
         return await _dataContext.PhieuXuats
                         .Include(px => px.DaiLy)
+                        .Include(px=>px.ChiTietPhieuXuats)
                         .ToListAsync();
     }
     public async Task<int> AddPhieuXuatAsync(PhieuXuat newPhieuXuat)

@@ -18,6 +18,8 @@ public class DaiLyRepository : IDaiLyRepository
         return await _dataContext.DaiLies
                         .Include(dl => dl.Quan)
                         .Include(dl => dl.LoaiDaiLy)
+                        .Include(dl=>dl.PhieuThus)
+                        .Include(dl=>dl.PhieuXuats)
                         .ToListAsync();
     }
 
@@ -29,7 +31,7 @@ public class DaiLyRepository : IDaiLyRepository
 
     public async Task<int> GetNextAvailableIdAsync()
     {
-        var maxId = await _dataContext.DaiLies.MaxAsync(dl => (int?)dl.MaDaily) ?? 0;
+        var maxId = await _dataContext.DaiLies.MaxAsync(dl => (int?)dl.MaDaiLy) ?? 0;
         return maxId + 1;
     }
 

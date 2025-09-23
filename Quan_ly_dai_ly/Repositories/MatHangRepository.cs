@@ -16,6 +16,7 @@ public class MatHangRepository : IMatHangRepository
     {
         return await _dataContext.MatHangs
                         .Include(mh => mh.DonViTinh)
+                        .Include(mh=>mh.ChiTietPhieuXuats)
                         .ToListAsync();
     }
 }

@@ -5,7 +5,7 @@ namespace Quan_ly_dai_ly.Models;
 public class DaiLy
 {
     [Key]
-    public int MaDaily { get; set; }
+    public int MaDaiLy { get; set; }
     public string Ten { get; set; } = "";
     public string DienThoai { get; set; } = string.Empty;
     public string DiaChi { get; set; } = "";

@@ -15,6 +15,8 @@ public class DonViTinhRepository : IDonViTinhRepository
     }
     public async Task<IEnumerable<DonViTinh>> GetAllDonViTinhsAsync()
     {
-        return await _dataContext.DonViTinhs.ToListAsync();
+        return await _dataContext.DonViTinhs
+                                 .Include(dvt=>dvt.MatHangs)
+                                 .ToListAsync();
     }
 }
