@@ -123,12 +123,12 @@
                         Text="Lập phiếu thu tiền" 
                         WidthRequest="150"
                         HorizontalOptions="Start"
-                        Command="{Binding LapPhieuThuTienButton}"/>
+                        Command="{Binding LapPhieuThuTienButtonCommand}"/>
                 <Button Style="{StaticResource PrimaryButtonStyle}" 
                         Grid.Column="1" 
                         Text="Tìm đại lý"
                         HorizontalOptions="Center"
-                        Command="{Binding TimDaiLyButton}"/>
+                        Command="{Binding TimDaiLyButtonCommand}"/>
                 <Button Style="{StaticResource PrimaryButtonStyle}" 
                         Grid.Column="2" 
                         Text="Thoát" 

@@ -38,6 +38,7 @@ public partial class DanhSachPhieuThuPageViewModels : BaseViewModel
         var phieuthus = await _phieuService.GetAllPhieuThusAsync();
         DanhSachPhieuThu = new ObservableCollection<PhieuThu>(phieuthus);
 
+        DanhSachDongHienThi.Clear();
         for (int i = 0; i<DanhSachPhieuThu.Count(); i++)
         {
             DanhSachDongHienThi.Add(new DongHienThi

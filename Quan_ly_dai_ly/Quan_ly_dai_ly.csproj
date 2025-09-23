@@ -100,6 +100,9 @@
 	  <MauiXaml Update="Styles\Label.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\BaoCaoViews\LapBaoCaoDoanhSoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DaiLyViews\DanhSachDaiLyPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

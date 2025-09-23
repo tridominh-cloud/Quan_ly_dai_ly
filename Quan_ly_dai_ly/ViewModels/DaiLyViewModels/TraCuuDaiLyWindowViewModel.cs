@@ -149,6 +149,7 @@ public partial class TraCuuDaiLyWindowViewModel : BaseViewModel
             else
             {
                 DanhSachDongHienThi.Clear();
+                DanhSachDaiLy.Clear();
                 foreach (var dl in DaiLies)
                 {
                     if (KiemTraMaDaiLy(dl) == 1
