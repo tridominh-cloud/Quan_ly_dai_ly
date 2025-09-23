@@ -25,4 +25,5 @@ public class PhieuXuatServiceImpl : IPhieuXuatService
     {
         return await _phieuXuatRepository.GetNextAvailableIdAsync();
     }
+
 }

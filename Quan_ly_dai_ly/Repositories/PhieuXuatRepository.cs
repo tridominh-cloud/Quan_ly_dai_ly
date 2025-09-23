@@ -25,7 +25,7 @@ public class PhieuXuatRepository : IPhieuXuatRepository
     }
     public async Task<int> GetNextAvailableIdAsync()
     {
-        var maxId = await _dataContext.PhieuXuats.MaxAsync(px => (int?)px.MaPhieuXuat) ?? 0;
+        var maxId = await _dataContext.PhieuXuats.MaxAsync(px => px.MaPhieuXuat);
         return maxId + 1;
     }
 }

@@ -43,10 +43,10 @@
                     
                     <Grid ColumnDefinitions="*,*,*,*,*" Grid.Row="1" ColumnSpacing="20">
                         <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="0" HeightRequest="40">
-                            <Entry Text="{Binding NamLapBaoCao}"/>
+                            <Label Text="{Binding NamLapBaoCao}"/>
                         </Border>
                         <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="1" HeightRequest="40">
-                            <Entry Text="{Binding ThangLapBaoCao}"/>
+                            <Label Text="{Binding ThangLapBaoCao}"/>
                         </Border>
                     </Grid>
 

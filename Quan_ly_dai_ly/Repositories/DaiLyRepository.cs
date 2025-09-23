@@ -32,4 +32,5 @@ public class DaiLyRepository : IDaiLyRepository
         var maxId = await _dataContext.DaiLies.MaxAsync(dl => (int?)dl.MaDaily) ?? 0;
         return maxId + 1;
     }
+
 }
