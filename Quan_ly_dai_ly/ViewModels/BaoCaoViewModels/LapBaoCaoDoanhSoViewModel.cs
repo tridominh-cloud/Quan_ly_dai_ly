@@ -32,19 +32,19 @@ public partial class LapBaoCaoDoanhSoViewModel : BaseViewModel
         _daiLyService = daiLyService;
         _phieuXuatService = phieuXuatService;
 
-		ThangLapBaoCao = 12;
-		NamLapBaoCao = 2022;
-
+		ThangLapBaoCao = 9;
+		NamLapBaoCao = 2025;
 
 		_ = LoadDataAsync();
-		LoadDongHienThi();
+
     }
 
 	private async Task LoadDataAsync()
 	{
 		var dailies = await _daiLyService.GetAllDaiLiesAsync();
 		DanhSachDaiLy = new ObservableCollection<DaiLy>(dailies);
-	}
+        LoadDongHienThi();
+    }
     private void LoadDongHienThi()
 	{
 		var dsDaiLy = DanhSachDaiLy
@@ -53,7 +53,7 @@ public partial class LapBaoCaoDoanhSoViewModel : BaseViewModel
 								.ToList();
 
 		DanhSachDongHienThi.Clear();
-		
+		TongDoanhSo = 0;
 		foreach(var dsdl in dsDaiLy)
 		{
 			TongDoanhSo += dsdl.PhieuXuats.Sum(px => px.TongGiaTri);

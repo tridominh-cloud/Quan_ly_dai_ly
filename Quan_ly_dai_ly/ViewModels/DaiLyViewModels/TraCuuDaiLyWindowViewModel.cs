@@ -190,7 +190,7 @@ public partial class TraCuuDaiLyWindowViewModel : BaseViewModel
     private int KiemTraMaDaiLy(DaiLy daiLy)
     {        
         var strDieuKien = MaDaiLy.ToString() ?? string.Empty;
-        var strMaDaiLy = daiLy.MaDaily.ToString();
+        var strMaDaiLy = daiLy.MaDaiLy.ToString();
 
         return MaDaiLy == 0 || strMaDaiLy.Contains(strDieuKien) ? 1 : 0;
     }

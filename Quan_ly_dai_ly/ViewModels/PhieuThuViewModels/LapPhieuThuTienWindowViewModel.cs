@@ -45,7 +45,7 @@ public partial class LapPhieuThuTienWindowViewModel : BaseViewModel
             var newPhieuThu = new PhieuThu
             {
                 MaPhieuThu = await _phieuThuService.GetNextIdAvailable(),
-                MaDaiLy = SelectedDaiLy.MaDaily,
+                MaDaiLy = SelectedDaiLy.MaDaiLy,
                 NgayThuTien = NgayThuTien,
                 SoTienThu = SoTienThu
             };

@@ -9,7 +9,7 @@
             BackgroundColor="White">
         <Grid RowDefinitions="50, *">
             <Grid ColumnDefinitions="*,*" Grid.Row="0">
-                <Label Text="Tra cứu đại lý"
+                <Label Text="Lập báo cáo doanh số"
                        Grid.Column="0"
                        Margin="20,0,0,0"
                        VerticalOptions="Center"
@@ -42,11 +42,11 @@
                     </Grid>
                     
                     <Grid ColumnDefinitions="*,*,*,*,*" Grid.Row="1" ColumnSpacing="20">
-                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="0" HeightRequest="40">
-                            <Label Text="{Binding NamLapBaoCao}"/>
+                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="0" HeightRequest="40" Padding="10">
+                            <Label Text="{Binding NamLapBaoCao}" VerticalOptions="Center"/>
                         </Border>
-                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="1" HeightRequest="40">
-                            <Label Text="{Binding ThangLapBaoCao}"/>
+                        <Border Style="{StaticResource PrimaryBorderStyle}" Grid.Column="1" HeightRequest="40" Padding="10">
+                            <Label Text="{Binding ThangLapBaoCao}" VerticalOptions="Center"/>
                         </Border>
                     </Grid>
 
@@ -62,11 +62,11 @@
                         <Border Style="{StaticResource PrimaryBorderStyle}" 
                                 HeightRequest="40" 
                                 WidthRequest="200">
-                            <Label Text="{Binding TongDoanhSo}"/>
+                            <Label Text="{Binding TongDoanhSo, StringFormat='{0:N0} VNĐ'}" VerticalOptions="Center" Padding="10"/>
                         </Border>
                     </HorizontalStackLayout>
                     
-                    <Grid ColumnDefinitions="0.25*,*,*,1.5*,*" Grid.Row="4">
+                    <Grid ColumnDefinitions="0.25*,*,*,1.5*,*" Grid.Row="4" Padding="5" Margin="0,10,0,0">
                         <Label Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="STT"/>
                         <Label Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="TÊN ĐẠI LÝ"/>
                         <Label Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="SỐ LƯỢNG PHIẾU XUẤT"/>
@@ -74,19 +74,33 @@
                         <Label Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="TỈ LỆ"/>
                     </Grid>
 
-                    <CollectionView ItemsSource="{Binding DongHienThi}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid ColumnDefinitions="0.25*,*,*,1.5*,*">
-                                    <Label Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding STT}"/>
-                                    <Label Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding DaiLy.TenDaiLy}"/>
-                                    <Label Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding SoLuongPhieuXuat}"/>
-                                    <Label Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding TongGiaiDich}"/>
-                                    <Label Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" Text="{Binding TiLe}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <Border Grid.Row="5"
+                            BackgroundColor="White"
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 5"
+                            StrokeThickness="1">
+                        <CollectionView Grid.Row="5" ItemsSource="{Binding DanhSachDongHienThi}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="0.25*,*,*,1.5*,*"
+                                          RowDefinitions="Auto,Auto"
+                                          Padding="10">
+                                        <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" Text="{Binding STT}"/>
+                                        <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" Text="{Binding DaiLy.Ten}"/>
+                                        <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" Text="{Binding SoLuongPhieuXuat}"/>
+                                        <Label Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" Text="{Binding TongGiaTri, StringFormat='{0:N0} VNĐ'}"/>
+                                        <Label Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" Text="{Binding TiLe, StringFormat='{}{0:P2}'}"/>
+
+                                        <BoxView Grid.Row="1"
+                                                 Grid.ColumnSpan="5"
+                                                 HeightRequest="0.5"
+                                                 VerticalOptions="Center"
+                                                 Color="LightGray"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Border>
                 </Grid>
                 
             </Border>

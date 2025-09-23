@@ -94,7 +94,7 @@ public partial class LapPhieuXuatHangWindowViewModel : BaseViewModel
             var newPhieuXuat = new PhieuXuat
             {
                 MaPhieuXuat = MaPhieuXuat,
-                MaDaiLy = SelectedDaiLy.MaDaily,
+                MaDaiLy = SelectedDaiLy.MaDaiLy,
                 NgayLap = NgayLap,
                 TongGiaTri = TongTien
             };

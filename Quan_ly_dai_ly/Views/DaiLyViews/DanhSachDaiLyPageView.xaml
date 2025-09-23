@@ -79,7 +79,7 @@
                                   BackgroundColor="White">
                                 <Label
                                     Grid.Column="0"
-                                    Text="{Binding MaDaily}"
+                                    Text="{Binding MaDaiLy}"
                                     HorizontalOptions="Center"/>
                                 <Label
                                     Grid.Column="1"
